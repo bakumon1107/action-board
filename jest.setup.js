@@ -256,52 +256,6 @@ jest.mock("react-dom", () => ({
   useFormStatus: jest.fn(() => ({ pending: false })),
 }));
 
-jest.mock("@/features/user-level/services/level", () => ({
-  getUserLevel: jest.fn(() =>
-    Promise.resolve({
-      user_id: "test-user-id",
-      level: 2,
-      xp: 100,
-      last_notified_level: 1,
-      updated_at: "2023-01-01T00:00:00Z",
-    }),
-  ),
-}));
-
-jest.mock("@/features/user-profile/services/profile", () => ({
-  getPrivateUserData: jest.fn(() =>
-    Promise.resolve({
-      id: "test-user-id",
-      name: "テストユーザー",
-      address_prefecture: "東京都",
-      avatar_url: null,
-    }),
-  ),
-  getProfile: jest.fn(() =>
-    Promise.resolve({
-      id: "test-user-id",
-      name: "テストユーザー",
-      address_prefecture: "東京都",
-      avatar_url: null,
-    }),
-  ),
-  getMyProfile: jest.fn(() =>
-    Promise.resolve({
-      id: "test-user-id",
-      name: "テストユーザー",
-      address_prefecture: "東京都",
-      avatar_url: null,
-      email: "test@example.com",
-    }),
-  ),
-  getUser: jest.fn(() =>
-    Promise.resolve({
-      id: "test-user-id",
-      email: "test@example.com",
-    }),
-  ),
-}));
-
 jest.mock("@radix-ui/react-dialog", () => {
   const mockReact = require("react");
 
@@ -349,54 +303,3 @@ jest.mock("@radix-ui/react-dialog", () => {
 
   return mockComponents;
 });
-
-jest.mock("@/features/metrics/services/get-metrics", () => ({
-  fetchSupporterData: jest.fn(() =>
-    Promise.resolve({
-      totalCount: 75982,
-      last24hCount: 1710,
-      updatedAt: "2025-07-03T02:20:00Z",
-    }),
-  ),
-  fetchDonationData: jest.fn(() =>
-    Promise.resolve({
-      totalAmount: 100000000,
-      last24hAmount: 500000,
-      updatedAt: "2025-07-03T02:20:00Z",
-    }),
-  ),
-  fetchAchievementData: jest.fn(() =>
-    Promise.resolve({
-      totalCount: 1234,
-      todayCount: 56,
-    }),
-  ),
-  fetchRegistrationData: jest.fn(() =>
-    Promise.resolve({
-      totalCount: 567,
-      todayCount: 12,
-    }),
-  ),
-  fetchAllMetricsData: jest.fn(() =>
-    Promise.resolve({
-      supporter: {
-        totalCount: 75982,
-        last24hCount: 1710,
-        updatedAt: "2025-07-03T02:20:00Z",
-      },
-      donation: {
-        totalAmount: 100000000,
-        last24hAmount: 500000,
-        updatedAt: "2025-07-03T02:20:00Z",
-      },
-      achievement: {
-        totalCount: 1234,
-        todayCount: 56,
-      },
-      registration: {
-        totalCount: 567,
-        todayCount: 12,
-      },
-    }),
-  ),
-}));

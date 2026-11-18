@@ -1,5 +1,8 @@
 # Poster Data Management
 
+このディレクトリは、ポスター掲示板の位置データをCSVからデータベースへ登録するための
+管理ツールです。地域名や選挙区名に依存しない汎用運用を想定しています。
+
 This directory contains tools for managing poster board location data.
 
 ## Directory Structure

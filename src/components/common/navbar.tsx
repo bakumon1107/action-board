@@ -1,86 +1,42 @@
-import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import HeaderAuth from "@/components/common/header-auth";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { OnboardingButton } from "@/features/onboarding/components/onboarding-button";
-import { getUser } from "@/features/user-profile/services/profile";
+import { signOutAction } from "@/app/actions";
+import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 
 export default async function Navbar() {
-  const user = await getUser();
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <nav className="sticky top-4 z-50 w-full flex justify-center h-16">
       <div className="px-4 w-full flex justify-between items-center text-sm bg-white border-b border-b-foreground/10 mx-4 rounded-2xl ">
         <div className="flex gap-5 items-center font-semibold min-w-[60px]">
-          <Link href="/" className="flex items-center gap-4">
+          <Link href="/map/poster" className="flex items-center gap-4">
             <Image
               src="/img/logo_shiro.png"
               alt="logo"
               width={48}
               height={48}
             />
-            <div className="text-lg">アクションボード</div>
+            <div className="text-lg">ポスターマップ</div>
           </Link>
         </div>
         {user ? (
-          <div className="flex gap-6 items-center">
-            <div className="font-semibold hidden sm:flex">
-              <Link href="/">ホーム</Link>
-            </div>
-            <HeaderAuth />
-          </div>
+          <form action={signOutAction}>
+            <Button type="submit" variant="outline" size="sm">
+              ログアウト
+            </Button>
+          </form>
         ) : (
-          <>
-            <div className="gap-6 items-center font-semibold hidden sm:flex">
-              <Link href="/">ホーム</Link>
-              <HeaderAuth />
-            </div>
-            <div className="flex gap-6 items-center font-semibold sm:hidden">
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  aria-label="ナビゲーションメニューを開く"
-                  data-testid="navmenubutton"
-                >
-                  <Menu />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-                  side="bottom"
-                  align="end"
-                  sideOffset={4}
-                >
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem asChild>
-                      <Link href="/">ホーム</Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <OnboardingButton
-                        variant="link"
-                        className="w-full justify-start p-0 h-auto text-sm"
-                      >
-                        アクションボードとは？
-                      </OnboardingButton>
-                    </DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link href="/sign-in">ログイン</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/sign-up">新規登録</Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </>
+          <Link
+            href="/sign-in"
+            className="rounded-md border px-3 py-2 text-sm font-semibold"
+          >
+            ログイン
+          </Link>
         )}
       </div>
     </nav>

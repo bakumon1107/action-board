@@ -1,4 +1,15 @@
-# アクションボード
+# 地域対応ポスター掲示板マップ
+
+このブランチは、ポスター掲示板データと地図表示機能を任意の地域で利用するための
+専用構成です。起動後のトップページはポスターマップへリダイレクトされます。
+
+元プロジェクトのソース: https://github.com/bakumon1107/action-board
+
+## ライセンス
+
+このプロジェクトは GNU Affero General Public License v3.0（AGPL-3.0）で配布されています。
+変更版をネットワーク越しに公開する場合は、利用者が対応するソースコードを入手できる
+ようにしてください。ライセンス全文は [LICENSE](./LICENSE) を参照してください。
 
 [![Check code with Biome and tsc](https://github.com/team-mirai/action-board/actions/workflows/check_code.yaml/badge.svg)](https://github.com/team-mirai/action-board/actions/workflows/check_code.yaml)
 [![Build & Test E2E/RLS](https://github.com/team-mirai/action-board/actions/workflows/e2e_test.yaml/badge.svg)](https://github.com/team-mirai/action-board/actions/workflows/e2e_test.yaml)

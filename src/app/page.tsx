@@ -1,8 +1,5 @@
-import Home from "./home";
-export const dynamic = "force-dynamic";
+import { redirect } from "next/navigation";
 
-export default async function Page(props: {
-  searchParams: Promise<{ ref?: string; preview?: string }>;
-}) {
-  return <Home {...props} />;
+export default function Page() {
+  redirect("/map/poster");
 }

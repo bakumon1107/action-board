@@ -3,10 +3,8 @@
 import { ChevronRight, MapPin } from "lucide-react";
 import Link from "next/link";
 import { useMemo } from "react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { statusConfig } from "../config/status-config";
-import { JP_TO_EN_DISTRICT } from "../constants/poster-district-shugin-2026";
 import type { BoardStatus } from "../types/poster-types";
 import {
   calculateProgressRate,
@@ -89,7 +87,7 @@ export default function PosterMapPageClientOptimized({
       <div className="space-y-2">
         <h1 className="text-2xl font-bold">ポスター掲示板マップ</h1>
         <p className="text-muted-foreground">
-          選挙区を選択して、各地域のポスター掲示板の状況を確認できます
+          地域を選択して、各地域のポスター掲示板の状況を確認できます
         </p>
       </div>
 
@@ -154,20 +152,19 @@ export default function PosterMapPageClientOptimized({
 
       {/* District List */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold">選挙区から選択</h2>
+        <h2 className="text-xl font-semibold">地域から選択</h2>
         {sortedDistricts.length === 0 ? (
           <Card>
             <CardContent className="py-8 text-center text-muted-foreground">
-              現在表示できる選挙区がありません
+              現在表示できる地域がありません
             </CardContent>
           </Card>
         ) : (
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {sortedDistricts.map((districtJp) => {
-              // 区割り名からURLキーを取得（DB のデータを優先）
-              const districtKey =
-                JP_TO_EN_DISTRICT[districtJp] ||
-                districtJp.toLowerCase().replace(/[^a-z0-9]/g, "-");
+              const districtKey = districtJp
+                .toLowerCase()
+                .replace(/[^a-z0-9]/g, "-");
               const stats = boardStats[districtJp] || {
                 not_yet: 0,
                 not_yet_dangerous: 0,
@@ -245,26 +242,6 @@ export default function PosterMapPageClientOptimized({
             })}
           </div>
         )}
-      </div>
-
-      {/* Action Button */}
-      <div className="flex justify-center pt-4">
-        <Button size="lg" asChild>
-          <Link href="/#featured-missions">
-            ミッション一覧に戻る
-            <ChevronRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
-      </div>
-
-      {/* Archive Link */}
-      <div className="flex justify-center pt-2 pb-4">
-        <Link
-          href="/map/poster/archive/sangin-2025"
-          className="text-sm text-muted-foreground hover:text-foreground hover:underline"
-        >
-          過去の選挙データを見る（参議院選挙 2025）
-        </Link>
       </div>
     </div>
   );
