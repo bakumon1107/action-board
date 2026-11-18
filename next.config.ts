@@ -29,8 +29,8 @@ export default withSentryConfig(nextConfig, {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
-  org: "team-mirai",
-  project: "action-board",
+  org: "regional-poster-map",
+  project: "regional-poster-map",
   authToken: process.env.SENTRY_AUTH_TOKEN,
 
   // Suppress logs unless UPLOAD_SOURCEMAPS is set

@@ -13,9 +13,8 @@ export const defaultUrl =
 // ==========================================
 
 export const config = {
-  title: "チームみらい アクションボード",
-  description:
-    "政治活動をもっと身近に。楽しく政治参加に取り組める、チームみらいのアクションボード。",
+  title: "地域ポスターマップ",
+  description: "地域のポスター掲示板の位置と状態を確認できます。",
   defaultImage: "/img/ogp-default.png?v=20250714",
   icons: {
     icon: [

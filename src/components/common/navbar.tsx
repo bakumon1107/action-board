@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { signOutAction } from "@/app/actions";
 import { Button } from "@/components/ui/button";
@@ -15,12 +14,6 @@ export default async function Navbar() {
       <div className="px-4 w-full flex justify-between items-center text-sm bg-white border-b border-b-foreground/10 mx-4 rounded-2xl ">
         <div className="flex gap-5 items-center font-semibold min-w-[60px]">
           <Link href="/map/poster" className="flex items-center gap-4">
-            <Image
-              src="/img/logo_shiro.png"
-              alt="logo"
-              width={48}
-              height={48}
-            />
             <div className="text-lg">ポスターマップ</div>
           </Link>
         </div>

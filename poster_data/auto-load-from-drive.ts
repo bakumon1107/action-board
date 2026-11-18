@@ -12,7 +12,8 @@ import { appendFile, copyFile, mkdir, rm } from "node:fs/promises";
 import { basename, join } from "node:path";
 
 const SOURCE_PATH =
-  "~/Google Drive/Shared drives/チームみらい(外部共有)/ポスター・ポスティングロジ/ポスター・ポスティング作業用/ポスター/ポスター掲示場CSV化/自治体";
+  process.env.POSTER_DRIVE_ROOT ||
+  `${process.env.HOME}/Google Drive/Shared drives/ポスターデータ`;
 const SUCCESS_DATA_DIR = "poster_data/data";
 const BROKEN_DATA_DIR = "poster_data/broken_data";
 const TEMP_DIR = "poster_data/temp";
