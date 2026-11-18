@@ -9,6 +9,7 @@
 
 - このプロジェクトは GNU Affero General Public License v3.0（AGPL-3.0）で配布します。
 - 元ソースコードは https://github.com/bakumon1107/action-board にあります。
+- 派生元の上流リポジトリは https://github.com/team-mirai/action-board です。
 - `LICENSE` を削除・置換しないでください。
 - 公開した派生版は、利用者が対応するソースコードを入手できる手段を提供してください。
 - このフォークは新しいコントリビューターライセンス契約を要求しません。

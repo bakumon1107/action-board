@@ -11,6 +11,15 @@ export function CopyrightSection() {
           >
             元ソースコード
           </a>{" "}
+          ｜
+          <a
+            href="https://github.com/team-mirai/action-board"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline"
+          >
+            派生元
+          </a>{" "}
           ｜ GNU Affero General Public License v3.0
         </p>
       </div>
