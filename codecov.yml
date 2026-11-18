@@ -40,8 +40,4 @@ ignore:
   - "coverage/**/*"
   - ".next/**/*"
   - "supabase/**/*"
-  - "mission_data/**/*"
   - "poster_data/**/*"
-  - "posting_data/**/*"
-  - "packages/**/*"
-  - "scripts/**/*"
